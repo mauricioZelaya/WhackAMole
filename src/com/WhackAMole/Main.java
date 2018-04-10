@@ -9,10 +9,9 @@ public class Main {
         int positionY;
         Scanner scanner = new Scanner(System.in);
         WhackAMole game = new WhackAMole(50, 10);
-        game.printGrid();
-        System.out.println("Attempts Left: " + game.getAttemptsLeft());
-        System.out.println("Moles Left: " + game.getMolesLeft());
-        System.out.println("Score: " + game.getScore());
+        System.out.println("Game is Started.........");
+        game.printGridToUSer();
+        game.printBoard();
         while (game.getAttemptsLeft() > 0){
             System.out.println("Enter a value for X coordinate (0-9): ");
             positionX = scanner.nextInt();
@@ -21,9 +20,7 @@ public class Main {
             if(positionX != -1 && positionY != -1)
             {
                 game.whack(positionX, positionY);
-                System.out.println("Attempts Left: " + game.getAttemptsLeft());
-                System.out.println("Moles Left: " + game.getMolesLeft());
-                System.out.println("Score: " + game.getScore());
+                game.printBoard();
             }
             else break;
 

@@ -23,7 +23,7 @@ public class WhackAMole {
     public void printGridToUSer() {
         for (int i = 0; i < moleGrid.length; i++) {
             for (int j = 0; j < moleGrid[i].length; j++) {
-                System.out.println("\t * ");
+                System.out.print("\t * ");
             }
             System.out.println();
         }
@@ -41,7 +41,7 @@ public class WhackAMole {
     public void printGrid(){
         for (int i = 0; i < moleGrid.length; i++) {
             for (int j = 0; j < moleGrid[i].length; j++) {
-                System.out.println(moleGrid[i][j] + "\t" + i + " " + j);
+                System.out.print(moleGrid[i][j] + "\t");
             }
             System.out.println();
         }
@@ -57,6 +57,12 @@ public class WhackAMole {
 
     public int getMolesLeft() {
         return molesLeft;
+    }
+
+    public void printBoard(){
+        System.out.println("Attempts Left: " + getAttemptsLeft());
+        System.out.println("Moles Left: " + getMolesLeft());
+        System.out.println("Score: " + getScore());
     }
 
     private void initializeMoleGrid(){

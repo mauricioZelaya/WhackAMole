@@ -2,7 +2,7 @@ package com.WhackAMole;
 
 public class WhackAMole {
     private int score = 0;
-    private int molesLeft;
+    private int molesLeft = 10;
     private int attemptsLeft;
     private char [][] moleGrid;
 
@@ -14,17 +14,49 @@ public class WhackAMole {
     }
 
     public boolean place (int x, int y) {
-        //TODO
-        return true;
+        if(moleGrid[x][y] == 'M'){
+            return true;
+        }
+        return false;
     }
 
     public void printGridToUSer() {
         for (int i = 0; i < moleGrid.length; i++) {
             for (int j = 0; j < moleGrid[i].length; j++) {
-                System.out.println(moleGrid[i][j] + " ");
+                System.out.println("\t * ");
             }
             System.out.println();
         }
+    }
+
+    public void whack(int x, int y){
+        if(place(x, y)){
+            moleGrid[x][y] = 'W';
+            molesLeft--;
+            score+=1;
+        }
+        attemptsLeft--;
+    }
+
+    public void printGrid(){
+        for (int i = 0; i < moleGrid.length; i++) {
+            for (int j = 0; j < moleGrid[i].length; j++) {
+                System.out.println(moleGrid[i][j] + "\t" + i + " " + j);
+            }
+            System.out.println();
+        }
+    }
+
+    public int getAttemptsLeft() {
+        return attemptsLeft;
+    }
+
+    public int getScore(){
+        return score;
+    }
+
+    public int getMolesLeft() {
+        return molesLeft;
     }
 
     private void initializeMoleGrid(){
@@ -36,16 +68,17 @@ public class WhackAMole {
     }
 
     private void placeMolesInTheGrid(){
-        int xCordinate;
-        int yCordinate;
-        for (int i = 0; i < 10; i++){
-            xCordinate = generateRandomPosition();
-            yCordinate = generateRandomPosition();
-            moleGrid[xCordinate][yCordinate] = 'M';
+        int xCoordinate;
+        int yCoordinate;
+        for (int i = 0; i < molesLeft; i++){
+            xCoordinate = generateRandomPosition();
+            yCoordinate = generateRandomPosition();
+            moleGrid[xCoordinate][yCoordinate] = 'M';
         }
     }
 
     private int generateRandomPosition(){
-        return (int)Math.random() * 9;
+        double value = Math.random() * 10;
+        return (int)value;
     }
 }

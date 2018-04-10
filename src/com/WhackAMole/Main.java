@@ -3,6 +3,7 @@ package com.WhackAMole;
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	WhackAMole game = new WhackAMole(50, 10);
+	game.printGridToUSer();
     }
 }
